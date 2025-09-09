@@ -1,7 +1,8 @@
 # Pymoo subprocesses
 
 ## Requirements
-pip install -r requirements.txt
+Install with
+```pip install -r requirements.txt```
 
 ## ElementWise
 Individual members of the population are evaluated with _subprocess.check_output_ which can call any terminal command
