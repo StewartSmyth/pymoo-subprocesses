@@ -7,7 +7,6 @@ from pymoo.operators.sampling.rnd import FloatRandomSampling
 from pymoo.optimize import minimize
 from pymoo.visualization.scatter import Scatter
 import subprocess
-from pymoo.optimize import minimize
 
 import re
 

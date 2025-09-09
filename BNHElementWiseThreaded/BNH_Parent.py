@@ -4,15 +4,11 @@ import numpy as np
 from pymoo.optimize import minimize
 from pymoo.visualization.scatter import Scatter
 import subprocess
-from pymoo.optimize import minimize
 from pymoo.operators.crossover.sbx import SBX
 from pymoo.operators.mutation.pm import PM
 from pymoo.operators.sampling.rnd import FloatRandomSampling
-import pymoo.gradient.toolbox as anp
 from multiprocessing.pool import ThreadPool
 from pymoo.core.problem import StarmapParallelization
-from pymoo.algorithms.soo.nonconvex.ga import GA
-from pymoo.optimize import minimize
 
 class BNH(ElementwiseProblem):
 

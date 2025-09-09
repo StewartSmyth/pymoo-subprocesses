@@ -4,7 +4,6 @@ import numpy as np
 from pymoo.optimize import minimize
 from pymoo.visualization.scatter import Scatter
 import subprocess
-from pymoo.optimize import minimize
 from pymoo.operators.crossover.sbx import SBX
 from pymoo.operators.mutation.pm import PM
 from pymoo.operators.sampling.rnd import FloatRandomSampling
