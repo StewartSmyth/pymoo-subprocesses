@@ -16,7 +16,7 @@ class BNH(ElementwiseProblem):
         self.xu = np.array([5.0, 3.0])
 
     def _evaluate(self, x, out, *args, **kwargs):
-        # argument of check_output is ([...]) where the elements in the list are the arguments of the command
+        # argument of check_output is ([...]) where the elements in the list are the command followed by the arguments of the command
         returned = subprocess.check_output(["python3", "BNH_Target.py", str(x[0]), str(x[1])])
         returnedArr = returned.split()
         out["F"] = [float(returnedArr[0]), float(returnedArr[1])]
