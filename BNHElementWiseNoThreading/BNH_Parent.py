@@ -4,15 +4,9 @@ import numpy as np
 from pymoo.optimize import minimize
 from pymoo.visualization.scatter import Scatter
 import subprocess
-from pymoo.optimize import minimize
 from pymoo.operators.crossover.sbx import SBX
 from pymoo.operators.mutation.pm import PM
 from pymoo.operators.sampling.rnd import FloatRandomSampling
-import pymoo.gradient.toolbox as anp
-from multiprocessing.pool import ThreadPool
-from pymoo.core.problem import StarmapParallelization
-from pymoo.algorithms.soo.nonconvex.ga import GA
-from pymoo.optimize import minimize
 
 class BNH(ElementwiseProblem):
 
@@ -22,6 +16,7 @@ class BNH(ElementwiseProblem):
         self.xu = np.array([5.0, 3.0])
 
     def _evaluate(self, x, out, *args, **kwargs):
+        # argument of check_output is ([...]) where the elements in the list are the arguments of the command
         returned = subprocess.check_output(["python3", "BNH_Target.py", str(x[0]), str(x[1])])
         returnedArr = returned.split()
         out["F"] = [float(returnedArr[0]), float(returnedArr[1])]
@@ -35,15 +30,11 @@ algorithm = NSGA2(pop_size=100,
                   mutation=PM(eta=20),
                   eliminate_duplicates=True)
 
-n_threads = 32
-pool = ThreadPool(n_threads)
-runner = StarmapParallelization(pool.starmap)
 
-res = minimize(BNH(elementwise_runner = runner),
+res = minimize(BNH(),
                algorithm,
                ('n_gen', 10),
                seed=1,
                verbose=False)
-print(f"Threads {n_threads}:", res.exec_time)
 
 Scatter().add(res.F).save("pareto.png")
