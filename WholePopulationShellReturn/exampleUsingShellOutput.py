@@ -23,11 +23,8 @@ class ZDT1(Problem):
     def _run_target_file(self, x):
         np.save("population.npy", x)
         test = subprocess.check_output(["python3", "targetUsingShellOutput.py", "population.npy", str(self.n_var)])
-        print(test)
         decoded = test.decode("utf-8")
-        print(decoded)
         cleaned = re.sub(r"[\[\]]", "", decoded)
-        print(cleaned)
         arr = np.fromstring(cleaned, sep=" ")
         arr = arr.reshape(-1, 2)
         return arr
