@@ -14,8 +14,8 @@ class ZDT1(Problem):
         super().__init__(n_var=30, n_obj=2, n_ieq_constr=0, xl=0, xu=1, vtype=float)
 
     def _evaluate(self, x, out, *args, **kwargs):
-        self._run_target_file("target_returnF.npx", "target_returnG.npx", x)
-        out["F"] = self._recieve_objective_values("target_returnF.npx", "target_returnG.npx")
+        self._run_target_file("target_returnF.npy", "target_returnG.npy", x)
+        out["F"] = self._recieve_objective_values("target_returnF.npy", "target_returnG.npy")
 
     def _run_target_file(self, fileName1: str, fileName2: str, x):
         np.save("population.npy", x)
