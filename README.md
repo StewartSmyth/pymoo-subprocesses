@@ -5,7 +5,7 @@ Create venv with ```$python3 -m venv venv```
 
 Enter venv with ```$source venv/bin/activate```
 
-Install with ```$pip install -r requirements.txt```
+Install with ```$pip install -U pymoo```
 
 ## ElementWise
 Individual members of the population are evaluated with _subprocess.check_output_ which can call any terminal command
