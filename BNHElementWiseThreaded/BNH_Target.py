@@ -1,5 +1,4 @@
 from sys import argv
-import pymoo.gradient.toolbox as anp
 
 x = []
 
